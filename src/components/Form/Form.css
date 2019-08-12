@@ -4,4 +4,26 @@
     align-items: center;
     justify-content: center;
     padding-bottom: 3rem;
+    
+}
+
+.form button,
+.form input {
+    padding: .5rem 1rem;
+    border: none;
+}
+
+.form button:focus,
+.form input:focus {
+    outline: none;
+}
+
+.form button {
+    cursor: pointer;
+    background: #00a584;
+    color: var(--color-white);
+}
+
+.form input {
+    width: 23vw;
 }
