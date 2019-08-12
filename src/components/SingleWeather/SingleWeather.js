@@ -1,8 +1,21 @@
 import React, {Fragment} from 'react';
+import './SingleWeather.css';
 
 const weather = props => {
+
+    let image = require(`../../assets/weather/${props.icon}.jpg`)
+
     return (
-        <div>
+
+        <div 
+            className="single-weather"
+            style={{
+                    backgroundImage: `url(${image})`,
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover"
+            }}>
+        
             {
                 props.city && props.country && (
                 <Fragment>

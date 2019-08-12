@@ -88,7 +88,8 @@ class App extends Component {
                     country={this.state.weather.sys.country}
                     temperature={this.state.weather.main.temp}
                     humidity={this.state.weather.main.humidity}
-                    description={this.state.weather.weather[0].description}/>
+                    description={this.state.weather.weather[0].description}
+                    icon={this.state.weather.weather[0].icon}/>
             )
           }
           
