@@ -1,5 +1,7 @@
 import React from 'react';
 import './ListCities.css';
+import bg from '../../assets/bg.jpeg';
+
 
 const listCities = props => {
 
@@ -8,7 +10,12 @@ const listCities = props => {
     }
 
     return (
-        <div className="list__cities">      
+        <div className="list__cities"
+                style={{backgroundImage: `url(${bg})`,
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover",
+                      }}>      
        {
            props.citiesFound.length > 0 && props.citiesFound.map( city => {
              return (
