@@ -21,9 +21,9 @@ class App extends Component {
   state = {
     error: false,
 
-    weather: {},
+    weather: undefined,
 
-    listCities: []
+    listCities: undefined
   }
 
   getWeather = async (e) => {
@@ -55,9 +55,10 @@ class App extends Component {
   let weatherData = await api_call.json();
 
     
-   if(city){
+   if(city && weatherData){
       this.setState({
-        weather: weatherData
+        weather: weatherData,
+        listCities: undefined
       }, () => {console.log('after fetch', this.state.weather)})
     }
   }
@@ -72,9 +73,24 @@ class App extends Component {
           <Title />
           <Form getWeather={this.getWeather}/>
           
-
-          <ListCities citiesFound={this.state.listCities}
+          {
+            this.state.listCities && (
+                    <ListCities citiesFound={this.state.listCities}
                       requestCityWeather={this.getSingleWeather}/>
+            )
+          }
+
+          {
+            this.state.weather && (
+                  <SingleWeather 
+                    city={this.state.weather.name}
+                    country={this.state.weather.sys.country}
+                    temperature={this.state.weather.main.temp}
+                    humidity={this.state.weather.main.humidity}
+                    description={this.state.weather.weather[0].description}/>
+            )
+          }
+          
 
 
 
