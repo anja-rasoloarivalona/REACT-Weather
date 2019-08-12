@@ -58,9 +58,10 @@
     justify-content: space-between;
     align-items: center;
     color: var(--color-primary);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   
   .city__details__data {
     font-size: 1.1rem;
+    line-height: 1.3;
   }
