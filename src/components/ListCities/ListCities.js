@@ -2,6 +2,11 @@ import React from 'react';
 import './ListCities.css';
 
 const listCities = props => {
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     return (
         <div className="list__cities">      
        {
@@ -18,16 +23,16 @@ const listCities = props => {
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",
                       }} />
-                       <p className="city__weather__desc">{city.weather[0].description}</p>
+                       <p className="city__weather__desc">{capitalizeFirstLetter(city.weather[0].description)}</p>
                   </div>
 
                   <div className="city__temp">
-                      <p>{city.main.temp} &#8451;</p>
+                      <p>{Math.round(city.main.temp)} &#8451;</p>
                   </div>
 
                   <div className="city__details">
                       <p className="city__details__name">{city.name}, {city.sys.country} <span className={`flag flag-${city.sys.country.toLowerCase()}`}></span></p>
-                      <p className="city__details__data">From {city.main.temp_min} to {city.main.temp_max} &#8451;</p>
+                      <p className="city__details__data">From {Math.round(city.main.temp_min)} to {Math.round(city.main.temp_max)} &#8451;</p>
                       <p className="city__details__data">Lat: {city.coord.lat} - Long: {city.coord.lon}</p>
                   </div>                       
                   

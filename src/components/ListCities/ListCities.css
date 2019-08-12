@@ -7,11 +7,18 @@
   
   
   .city {
-    margin: 1rem 0;
     display: flex;
     justify-content: space-between;
-    width: 30vw;
-    background: #dfdfdf
+    width: 45rem;
+    border-bottom: 1px solid #d3d3d3;
+    cursor: pointer;
+    padding: .5rem;
+  }
+
+
+  .city:hover {
+      background: #e7e7e7;
+      
   }
   
   .city__weather {
@@ -47,8 +54,11 @@
   }
   
   .city__details__name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: var(--color-primary);
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
   
   .city__details__data {
