@@ -1,5 +1,5 @@
 .single-weather__container {
-    min-height: calc(100vh - 13rem);
+    min-height: calc(100vh - 12rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,14 +7,17 @@
 
 
 .single-weather {
-    width: 40rem;
-    height: 50rem;
+    width: 45rem;
     background: rgba(20, 20, 20, 0.479);
     color: var(--color-white);
 
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    padding: 2rem 0;
+
+    border-radius: 3px;
 }
 
 .single-weather__city {
@@ -25,8 +28,9 @@
 
 .single-weather__main {
     width: 50%;
-    height: 16%;
+    height: 9rem;
     position: relative;
+
 
 
     display: flex;
@@ -55,13 +59,15 @@
     position: absolute;
     bottom: 2rem;
     transform: translateX(-1rem);
+    font-size: 1.2rem;
 }
 
 .single-weather__details {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 80%;
+    width: 85%;
+    font-size: 1.2rem;
 }
 
 .single-weather__forecast__container {
@@ -76,9 +82,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    font-size: 1.2rem;
 }
 
 .single-weather__forecast__img {
     width: 4rem;
     height: 4rem;
+   
 }
