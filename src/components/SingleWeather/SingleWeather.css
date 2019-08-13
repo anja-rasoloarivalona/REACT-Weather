@@ -1,3 +1,65 @@
-.single-weather {
+.single-weather__container {
     min-height: calc(100vh - 13rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.single-weather {
+    width: 40rem;
+    height: 50rem;
+    background: rgba(20, 20, 20, 0.479);
+    color: var(--color-white);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.single-weather__city {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+}
+
+.single-weather__main {
+    width: 50%;
+    height: 16%;
+    position: relative;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: .5rem;
+    margin-bottom: 2rem;
+}
+
+.single-weather__main__img {
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.single-weather__main__temperature {
+    font-size: 3.5rem;
+    position: absolute;
+    top: 0;
+}
+
+.single-weather__main__desc {
+    position: absolute;
+    bottom: 2rem;
+    transform: translateX(-1rem);
+}
+
+.single-weather__details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
 }

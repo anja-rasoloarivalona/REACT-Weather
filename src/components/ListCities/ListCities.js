@@ -4,7 +4,7 @@ import './ListCities.css';
 
 import bg from '../../assets/bg.jpeg';
 
-/*import bg from '../../assets/weather/50n.jpg';*/
+
 
 
 const listCities = props => {
