@@ -1,0 +1,72 @@
+.modal {
+    position: fixed;
+    width: 50%;
+    top: 20vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 99010;
+    background: var(--color-white);
+}
+
+@media (max-width: 900px) {
+    .modal {
+        width: 80%;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal {
+        width: 95%;
+    }
+}
+
+.modal__header {
+    border-bottom: 2px solid var(--color-primary)
+}
+
+.modal__header h1 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin: 1rem;
+}
+
+.modal__body {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.modal__cta {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__cta button {
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+}
+
+.modal__cta button:focus {
+    outline: none;
+}
+
+.modal__cta button:hover,
+.modal__cta button:active {
+    background: var(--color-secondary);
+    color: var(--color-primary)
+}

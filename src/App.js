@@ -10,6 +10,9 @@ import SingleWeather from './components/SingleWeather/SingleWeather';
 
 import Spinner from './components/Spinner/Spinner';
 
+import Backdrop from './components/Backdrop/Backdrop';
+import Modal from './components/Modal/Modal';
+
 
 
 
@@ -20,7 +23,8 @@ const API_KEY = '2287b09e1620e5a36dcd2833009015f0';
 class App extends Component {
 
   state = {
-    error: false,
+    error: undefined,
+    showBackdrop: false,
 
     weather: undefined,
     listCities: undefined,
@@ -45,21 +49,34 @@ class App extends Component {
       `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/find?q=${city}&appid=${API_KEY}&units=metric`
     );
     let data = await api_call.json();
+
+    console.log(data);
+
+
+
     if(city && data){
 
-      if(data.list.length > 1 ){
+      if(data.count > 1 ){
         this.setState({
           listCities: data.list,
           weather: undefined,
           loading: false
         })
       } else {
+         
+        if(data.count === 1) {
+          this.setState({
+            weather: data.list[0],
+            listCities: undefined,
+            loading: false
+          })
+        } else {
+         this.setState({
+              loading: false,
+              error: 'Please enter a valid city name'
+          })
+        }
 
-        this.setState({
-          weather: data.list[0],
-          listCities: undefined,
-          loading: false
-        })
       }
 
       
@@ -97,6 +114,13 @@ class App extends Component {
     }
   }
 
+  onCloseModal = () => {
+    this.setState({
+      error: undefined,
+      showBackdrop: false
+    })
+  }
+
 
   render() {
 
@@ -108,6 +132,17 @@ class App extends Component {
     } else {
       data = (
         <Fragment>
+          {
+            this.state.error && (
+              <Backdrop open={this.state.showBackdrop} 
+                        onClick={this.onCloseModal} >
+                        
+                  <Modal onCloseModal={this.onCloseModal}>
+                      <p>{this.state.error}</p>
+                  </Modal>
+              </Backdrop>
+            )
+          }
           {
             this.state.listCities && (
                     <ListCities citiesFound={this.state.listCities}
