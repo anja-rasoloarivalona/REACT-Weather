@@ -23,7 +23,12 @@ class App extends Component {
 
     weather: undefined,
 
-    listCities: undefined
+
+
+    listCities: undefined,
+
+    city: undefined,
+    country: undefined
   }
 
   getWeather = async (e) => {
@@ -58,6 +63,8 @@ class App extends Component {
    if(city && weatherData){
       this.setState({
         weather: weatherData,
+        city: city,
+        country: country,
         listCities: undefined
       }, () => {console.log('after fetch', this.state.weather)})
     }
