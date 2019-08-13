@@ -41,10 +41,21 @@ class App extends Component {
     );
     let data = await api_call.json();
     if(city && data){
-      this.setState({
-        listCities: data.list,
-        weather: undefined
-      })
+
+      if(data.list.length > 1 ){
+        this.setState({
+          listCities: data.list,
+          weather: undefined
+        })
+      } else {
+
+        this.setState({
+          weather: data.list[0],
+          listCities: undefined
+        })
+      }
+
+      
     }  
 }
 
@@ -98,6 +109,8 @@ class App extends Component {
                   <SingleWeather 
                     city={this.state.weather.name}
                     country={this.state.weather.sys.country}
+
+
                     temperature={this.state.weather.main.temp}
                     
                     description={this.state.weather.weather[0].description}
