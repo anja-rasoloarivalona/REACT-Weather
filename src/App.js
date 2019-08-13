@@ -22,25 +22,24 @@ class App extends Component {
     error: false,
 
     weather: undefined,
-
-
-
     listCities: undefined,
 
     city: undefined,
     country: undefined
   }
 
+
+  componentDidMount(){
+    this.getSingleWeather()
+  }
+
   getWeather = async (e) => {
     e.preventDefault();
-
     const city = e.target.elements.city.value
-
     const api_call = await fetch(
       `http://api.openweathermap.org/data/2.5/find?q=${city}&appid=${API_KEY}&units=metric`
     );
     let data = await api_call.json();
-
     if(city && data){
       this.setState({
         listCities: data.list
@@ -49,17 +48,22 @@ class App extends Component {
 }
 
   getSingleWeather = async (data) => {
-  
-  const city = data.name;
 
-  const country = data.sys.country
+    let city, country;
 
-  const api_call = await fetch(
+    if(data){
+      city = data.name;
+      country = data.sys.country
+    } else {
+      city = 'Montreal';
+      country = 'ca'
+    }
+
+    const api_call = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${city},${country.toLowerCase()}&appid=${API_KEY}&units=metric`
     );
   let weatherData = await api_call.json();
 
-    
    if(city && weatherData){
       this.setState({
         weather: weatherData,
