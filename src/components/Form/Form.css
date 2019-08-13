@@ -4,14 +4,15 @@
     align-items: center;
     justify-content: center;
     height: 5rem;
-    background: #B0BDC1;
+    background: var(--color-secondary);
     
 }
 
 .form button,
 .form input {
-    padding: .5rem 1rem;
     border: none;
+    height: 3rem;
+    padding: .5rem 1rem;
 }
 
 .form button:focus,
@@ -21,10 +22,14 @@
 
 .form button {
     cursor: pointer;
-    background: #00a584;
+    background: var(--color-primary);
     color: var(--color-white);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .form input {
     width: 23vw;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
