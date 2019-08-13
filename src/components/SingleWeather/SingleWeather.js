@@ -24,7 +24,7 @@ class SingleWeather extends Component {
 
     componentDidMount = async () =>{
         const api_call = await fetch(
-            `http://api.openweathermap.org/data/2.5/forecast?q=${this.props.city},${this.props.country.toLowerCase()}&appid=${API_KEY}&units=metric`
+            `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${this.props.city},${this.props.country.toLowerCase()}&appid=${API_KEY}&units=metric`
           );
         let weatherData = await api_call.json();
 
@@ -63,7 +63,7 @@ class SingleWeather extends Component {
             this.setState({
                 weather: weatherData,
                 forecast: results
-            }, () => console.log('biim',this.state.forecast))
+            })
         }
       
     }

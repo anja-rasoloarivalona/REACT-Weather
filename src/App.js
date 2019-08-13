@@ -37,7 +37,7 @@ class App extends Component {
     e.preventDefault();
     const city = e.target.elements.city.value
     const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/find?q=${city}&appid=${API_KEY}&units=metric`
+      `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/find?q=${city}&appid=${API_KEY}&units=metric`
     );
     let data = await api_call.json();
     if(city && data){
@@ -72,7 +72,7 @@ class App extends Component {
     }
 
     const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city},${country.toLowerCase()}&appid=${API_KEY}&units=metric`
+      `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${city},${country.toLowerCase()}&appid=${API_KEY}&units=metric`
     );
   let weatherData = await api_call.json();
 
@@ -82,7 +82,7 @@ class App extends Component {
         city: city,
         country: country,
         listCities: undefined
-      }, () => {console.log('after fetch', this.state.weather)})
+      })
     }
   }
 
@@ -109,24 +109,14 @@ class App extends Component {
                   <SingleWeather 
                     city={this.state.weather.name}
                     country={this.state.weather.sys.country}
-
-
-                    temperature={this.state.weather.main.temp}
-                    
+                    temperature={this.state.weather.main.temp}                  
                     description={this.state.weather.weather[0].description}
-                    icon={this.state.weather.weather[0].icon}
-                    
+                    icon={this.state.weather.weather[0].icon}                    
                     pressure={this.state.weather.main.pressure}
                     humidity={this.state.weather.main.humidity}
                     wind={this.state.weather.wind.speed}/>
             )
-          }
-          
-
-
-
-         
-       
+          }         
       </div>
     )
   }
