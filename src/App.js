@@ -42,7 +42,8 @@ class App extends Component {
     let data = await api_call.json();
     if(city && data){
       this.setState({
-        listCities: data.list
+        listCities: data.list,
+        weather: undefined
       })
     }  
 }
