@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import './Flag.css';
 
 
 import Title from './components/Title/Title';
 import Form from './components/Form/Form';
-
 import ListCities from './components/ListCities/ListCities';
 import SingleWeather from './components/SingleWeather/SingleWeather';
+
+import Spinner from './components/Spinner/Spinner';
 
 
 
@@ -25,7 +26,9 @@ class App extends Component {
     listCities: undefined,
 
     city: undefined,
-    country: undefined
+    country: undefined,
+
+    loading: false
   }
 
 
@@ -34,6 +37,8 @@ class App extends Component {
   }
 
   getWeather = async (e) => {
+    this.setState({loading: true});
+
     e.preventDefault();
     const city = e.target.elements.city.value
     const api_call = await fetch(
@@ -45,13 +50,15 @@ class App extends Component {
       if(data.list.length > 1 ){
         this.setState({
           listCities: data.list,
-          weather: undefined
+          weather: undefined,
+          loading: false
         })
       } else {
 
         this.setState({
           weather: data.list[0],
-          listCities: undefined
+          listCities: undefined,
+          loading: false
         })
       }
 
@@ -60,6 +67,7 @@ class App extends Component {
 }
 
   getSingleWeather = async (data) => {
+    this.setState({ loading: true});
 
     let city, country;
 
@@ -81,8 +89,11 @@ class App extends Component {
         weather: weatherData,
         city: city,
         country: country,
-        listCities: undefined
+        listCities: undefined,
+        loading: false
       })
+    } else {
+      this.setState({ loading: false})
     }
   }
 
@@ -90,13 +101,13 @@ class App extends Component {
   render() {
 
    
-    
+    let data;
 
-    return (
-      <div>
-          <Title />
-          <Form getWeather={this.getWeather}/>
-          
+    if(this.state.loading){
+      data = <Spinner />
+    } else {
+      data = (
+        <Fragment>
           {
             this.state.listCities && (
                     <ListCities citiesFound={this.state.listCities}
@@ -116,7 +127,17 @@ class App extends Component {
                     humidity={this.state.weather.main.humidity}
                     wind={this.state.weather.wind.speed}/>
             )
-          }         
+          } 
+        </Fragment>
+      )
+    }
+
+    return (
+      <div>
+          <Title />
+          <Form getWeather={this.getWeather}/>
+          {data}
+                  
       </div>
     )
   }
