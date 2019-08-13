@@ -50,9 +50,6 @@ class App extends Component {
     );
     let data = await api_call.json();
 
-    console.log(data);
-
-
 
     if(city && data){
 
