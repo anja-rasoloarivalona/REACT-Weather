@@ -7,65 +7,66 @@
   }
   
   
-  .city {
+.city {
     display: flex;
     justify-content: space-between;
     width: 45rem;
     border-bottom: 1px solid #d3d3d3;
     cursor: pointer;
     padding: .5rem;
-
-
     background: rgba(224, 224, 224, 0.63);
   }
 
+  @media (max-width: 382px) {
+    .city  {
+        width: 95%;
+    }
+}
 
-  .city:hover {
-      background: #e7e7e7;
-      
-  }
+
+.city:hover {
+      background: #e7e7e7;     
+}
   
-  .city__weather {
+.city__weather {
     width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
+}
   
-  .city__weather__img {
+.city__weather__img {
     width: 9rem;
-    height: 9rem;
+    height: 9rem; 
+}
   
-  }
-  
-  .city__weather__desc {
+.city__weather__desc {
     padding: .5rem .7rem;
     font-size: 1.3rem;
     transform: translateY(-2rem);
-  }
+}
   
-  .city__temp {
+.city__temp {
     font-size: 2rem;
     color: var(--color-primary);
-    padding-top: 4rem;
+    padding-top: 4rem; 
+}
   
-  }
-  
-  .city__details {
+.city__details {
     padding-top: 4rem;
     width: 35%;
-  }
+}
   
-  .city__details__name {
+.city__details__name {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: var(--color-primary);
     font-size: 1.4rem;
-  }
+}
   
-  .city__details__data {
+.city__details__data {
     font-size: 1.1rem;
     line-height: 1.3;
-  }
+}

@@ -34,3 +34,9 @@
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
+
+@media (max-width: 600px) {
+    .form input {
+      width: 50vw;
+    }
+  }

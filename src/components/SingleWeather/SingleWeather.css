@@ -20,6 +20,12 @@
     border-radius: 3px;
 }
 
+@media (max-width: 382px) {
+    .single-weather  {
+        width: 95vw
+    }
+}
+
 .single-weather__city {
     text-align: center;
     font-size: 2rem;
@@ -68,6 +74,12 @@
     align-items: center;
     width: 85%;
     font-size: 1.2rem;
+}
+
+@media (max-width: 382px) {
+    .single-weather__details  {
+        width: 95%;
+    }
 }
 
 .single-weather__forecast__container {
